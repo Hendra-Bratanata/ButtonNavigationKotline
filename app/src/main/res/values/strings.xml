@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ButtonNavigation</string>
+    <string name="prev.match">Prev.Match</string>
+    <string name="next.match">Next.Match</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="string">String</string>
+    <string name="hello_halaman_2">HEllo halaman 2</string>
+    <string name="txVS">VS</string>
+    <string name="goals">Goals</string>
+    <string name="lineUps">Lineups</string>
+    <string name="subtitusi">Substitutes</string>
+    <string name="forward">Forward</string>
+    <string name="mindFiead">MindField</string>
+    <string name="defense">Defense</string>
+    <string name="Golkeeper">Gol Keeper</string>
+    <string name="shot">Shots</string>
+</resources>
