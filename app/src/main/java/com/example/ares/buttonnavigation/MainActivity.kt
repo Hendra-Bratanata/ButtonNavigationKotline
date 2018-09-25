@@ -1,7 +1,9 @@
 package com.example.ares.buttonnavigation
 
 
+import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.content.ContextCompat
@@ -38,10 +40,14 @@ class MainActivity : AppCompatActivity() {
                 Nextasy()
                 return@OnNavigationItemSelectedListener true
             }
+            R.id.navigation_favorite -> {
+
+            }
         }
         false
     }
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val action = supportActionBar
@@ -57,10 +63,15 @@ class MainActivity : AppCompatActivity() {
             wrapContent) {
                 above(R.id.navigation)
             }
-
+            view ().lparams(matchParent,dip(4)){
+                backgroundDrawable=ContextCompat.getDrawable(ctx,R.drawable.shadows)
+                above(R.id.navigation)
+            }
            btnNav = bottomNavigationView {
                 id = R.id.navigation
                 backgroundColor = Color.WHITE
+               itemIconTintList =ContextCompat.getColorStateList(ctx,R.drawable.nav_item_color)
+               itemTextColor=ContextCompat.getColorStateList(ctx,R.drawable.nav_item_color)
                 inflateMenu(R.menu.navigation)
             }.lparams(width = matchParent) {
                 alignParentBottom()
@@ -72,10 +83,8 @@ class MainActivity : AppCompatActivity() {
         Log.d("tag", "navigation")
         btnNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         adapter = PrevAdapter(list){
-            val toast = Toast.makeText(applicationContext,it.idEvent,Toast.LENGTH_SHORT)
-            toast.show()
             tglIndo = TanggalIndo()
-            startActivity<DetaiActivity>("data" to it)
+            startActivity<DetailActivity>("data" to it)
         }
         rvList.adapter = adapter
         asy()

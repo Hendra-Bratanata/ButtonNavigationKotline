@@ -12,23 +12,6 @@ data class Team(
         @SerializedName("strTeamBadge")
         var logo: String? = null
 
-//        @SerializedName("strAwayTeam")
-//        var AwayTeam :String? = null,
-//
-//        @SerializedName("intHomeScore")
-//        var HomeScore :String? = null,
-//
-//        @SerializedName("intAwayScore")
-//        var AwayScore :String? = null,
-//
-//        @SerializedName("strDate")
-//        var dateEvent :String? = null,
-//
-//        @SerializedName("idHomeTeam")
-//        var idHomeTeam :String? = null,
-//
-//        @SerializedName("idAwayTeam")
-//        var idAwayTeam :String? = null
 ) : Parcelable {
         constructor(source: Parcel) : this(
                 source.readString(),

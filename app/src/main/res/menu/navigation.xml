@@ -10,6 +10,10 @@
         android:id="@+id/navigation_dashboard"
         android:icon="@drawable/ic_av_timer_black_24dp"
         android:title="@string/next.match" />
+    <item
+        android:id="@+id/navigation_favorite"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/favorite"/>
 
 
 
