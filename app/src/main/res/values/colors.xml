@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="coloryel">#f2fd8b</color>
     <color name="colorOrange">#ffb702</color>
+    <color name="colorSecondaryText">#999c9a</color>
 </resources>

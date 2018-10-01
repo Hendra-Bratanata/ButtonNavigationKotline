@@ -14,4 +14,10 @@
     <string name="defense">Defense</string>
     <string name="Golkeeper">Gol Keeper</string>
     <string name="shot">Shots</string>
+    <string name="teams">teams</string>
+    <string name="favorites">favorite</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tambahfavorite">tambahFavorite</string>
 </resources>
