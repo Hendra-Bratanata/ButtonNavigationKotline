@@ -5,8 +5,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import anko.RecycleViewUI
-import com.example.ares.buttonnavigation.Data.Match
+import com.example.ares.buttonnavigation.anko.RecycleViewUI
+import com.example.ares.buttonnavigation.Model.Match
 import com.example.ares.buttonnavigation.R.id.*
 import com.example.ares.buttonnavigation.Utils.TanggalIndo
 import org.jetbrains.anko.AnkoContext
@@ -14,7 +14,9 @@ import org.jetbrains.anko.find
 
 class PrevAdapter(private val matches : List<Match>, private val listener: (Match)-> Unit)
     : RecyclerView.Adapter<MatchHolder>(){
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MatchHolder {
+
         return MatchHolder(RecycleViewUI<ViewGroup>().createView(AnkoContext.create(p0.context, p0)))
     }
 

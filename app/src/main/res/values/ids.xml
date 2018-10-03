@@ -57,4 +57,8 @@
     <item name="homeGoals" type="id" />
     <item name="homeShots" type="id" />
     <item name="awayShots" type="id" />
+    <item name="scrollViewDetail" type="id" />
+    <item name="main_container" type="id" />
+    <item name="bottom_layout" type="id" />
+    <item name="bottom_navigation" type="id" />
 </resources>

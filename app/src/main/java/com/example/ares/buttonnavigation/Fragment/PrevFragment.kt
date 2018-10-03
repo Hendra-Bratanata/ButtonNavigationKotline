@@ -24,7 +24,7 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx
 
-class NextFragment : Fragment(),AnkoComponent<Context> {
+class PrevFragment : Fragment(),AnkoComponent<Context> {
     private var list: MutableList<Match> = mutableListOf()
     lateinit var adapter: PrevAdapter
     private var gson: Gson = Gson()
@@ -59,13 +59,13 @@ class NextFragment : Fragment(),AnkoComponent<Context> {
             ctx.startActivity<DetailActivity>("data" to it)
         }
         rvList.adapter = adapter
-       nextMatch()
+       PrevMatch()
 
     }
 
-    fun nextMatch() {
+    fun PrevMatch() {
         doAsync {
-            val data = gson.fromJson(apiRepository.doRequest(TheSportDBAPI.getNextMatch()), MatchResponse::class.java)
+            val data = gson.fromJson(apiRepository.doRequest(TheSportDBAPI.getPrevMatch()), MatchResponse::class.java)
             uiThread {
                 Log.d("log", data.events.toString())
                 list.clear()
