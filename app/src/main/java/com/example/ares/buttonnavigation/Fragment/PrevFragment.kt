@@ -59,15 +59,13 @@ class PrevFragment : Fragment(),AnkoComponent<Context> {
             ctx.startActivity<DetailActivity>("data" to it)
         }
         rvList.adapter = adapter
-       PrevMatch()
-
+         match()
     }
-
-    fun PrevMatch() {
+lateinit var data:MatchResponse
+    private fun match() {
         doAsync {
-            val data = gson.fromJson(apiRepository.doRequest(TheSportDBAPI.getPrevMatch()), MatchResponse::class.java)
+                    data = gson.fromJson(apiRepository.doRequest(TheSportDBAPI.getPrevMatch()), MatchResponse::class.java)
             uiThread {
-                Log.d("log", data.events.toString())
                 list.clear()
                 list.addAll(data.events)
                 adapter.notifyDataSetChanged()

@@ -1,4 +1,4 @@
-package com.example.ares.buttonnavigation
+package com.example.ares.buttonnavigation.Utils
 
 import android.view.View
 

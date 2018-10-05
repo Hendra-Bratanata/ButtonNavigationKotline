@@ -4,39 +4,84 @@ package com.example.ares.buttonnavigation.Fragment
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.*
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import com.example.ares.buttonnavigation.*
 import com.example.ares.buttonnavigation.Activity.DetailActivity
 import com.example.ares.buttonnavigation.Adapter.PrevAdapter
 import com.example.ares.buttonnavigation.Model.Match
 import com.example.ares.buttonnavigation.Database.database
+import com.example.ares.buttonnavigation.Utils.invisible
+import com.example.ares.buttonnavigation.Utils.visible
+import com.example.ares.buttonnavigation.anko.MatchDetailView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx
+import org.jetbrains.anko.support.v4.onRefresh
+import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
-class FavoriteFragment : Fragment(),AnkoComponent<Context>{
+class FavoriteFragment : Fragment(),AnkoComponent<Context>, MatchDetailView {
+    override fun showLoading() {
+     progressBar.visible()
+    }
+
+    override fun hideLoading() {
+       progressBar.invisible()
+    }
+
+    override fun showMatchDetail(data: List<Match>) {
+      swipeRefreshLayout.isRefreshing = false
+        favorites.clear()
+        favorites.addAll(data)
+        adapter.notifyDataSetChanged()
+    }
 
     private var favorites: MutableList<Match> = mutableListOf()
     private lateinit var adapter: PrevAdapter
     private lateinit var listEvent: RecyclerView
+    lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    lateinit var progressBar: ProgressBar
 
-    override fun createView(ui: AnkoContext<Context>): View = with(ui){
+    override fun createView(ui: AnkoContext<Context>): View = with(ui) {
         linearLayout {
-            lparams (width = matchParent, height = wrapContent)
+            lparams(width = matchParent, height = wrapContent)
             topPadding = dip(16)
             leftPadding = dip(16)
             rightPadding = dip(16)
-                listEvent = recyclerView {
-                    lparams (width = matchParent, height = wrapContent)
-                    layoutManager = LinearLayoutManager(ctx)
+
+
+
+            swipeRefreshLayout = swipeRefreshLayout {
+
+                setColorSchemeResources(R.color.colorAccent,
+                        android.R.color.holo_green_light,
+                        android.R.color.holo_orange_light,
+                        android.R.color.holo_red_light)
+                relativeLayout {
+                    lparams(width = matchParent, height = wrapContent)
+
+
+                    listEvent = recyclerView {
+                        layoutManager = LinearLayoutManager(ctx)
+                    }.lparams(width = matchParent, height = wrapContent)
+
+
+                    progressBar = progressBar {
+                    }.lparams {
+                        centerHorizontally()
+                        centerVertically()
+
+                    }
                 }
             }
-
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -50,14 +95,19 @@ class FavoriteFragment : Fragment(),AnkoComponent<Context>{
         }
         listEvent.adapter =adapter
         showFavorite()
+        swipeRefreshLayout.onRefresh {
+            showFavorite()
+        }
     }
 
     private fun showFavorite(){
+        showLoading()
         context?.database?.use {
             val result = select(Match.TABEL_FAVORITE)
             val favorite = result.parseList(classParser<Match>())
-            favorites.addAll(favorite)
-            adapter.notifyDataSetChanged()
+            hideLoading()
+            showMatchDetail(favorite)
+
         }
     }
 

@@ -10,7 +10,7 @@ android {
         buildConfigField "String", "BASE_URL", "\"https://www.thesportsdb.com/\""
         buildConfigField "String", "TSBD_API_KEY", "\"1\""
         applicationId "com.example.ares.buttonnavigation"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"

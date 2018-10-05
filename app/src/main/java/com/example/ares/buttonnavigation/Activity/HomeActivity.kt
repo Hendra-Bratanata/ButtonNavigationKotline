@@ -25,18 +25,18 @@ class HomeActivity : AppCompatActivity() {
       mBottomNavigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                favorites -> {
-                   val acttion = supportActionBar
-                   acttion?.title = "Teams"
+                   val actionBar = supportActionBar
+                   actionBar?.title = "Teams"
                     loadFavoriteFragment(savedInstanceState)
                 }
                 prev_match -> {
-                    val acttion = supportActionBar
-                    acttion?.title = "Match"
+                    val actionBar = supportActionBar
+                    actionBar?.title = "Prev Match"
                     loadPrevFragment(savedInstanceState)
                 }
                 next_match ->{
-                    val acttion = supportActionBar
-                    acttion?.title = "Match"
+                    val actionBar = supportActionBar
+                    actionBar?.title = "Next Match"
                     loadNextFragment(savedInstanceState)
                 }
 
@@ -47,11 +47,11 @@ class HomeActivity : AppCompatActivity() {
             }
             true
         }
-       mBottomNavigation.selectedItemId = R.id.next_match
+       mBottomNavigation.selectedItemId = R.id.prev_match
     }
 
 
-    fun loadFavoriteFragment(save:Bundle?) {
+   private fun loadFavoriteFragment(save:Bundle?) {
         if (save == null) {
             supportFragmentManager.beginTransaction()
                     .replace(R.id.main_container, FavoriteFragment(), FavoriteFragment::class.java.simpleName)
@@ -59,7 +59,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun loadNextFragment(save:Bundle?) {
+  private  fun loadNextFragment(save:Bundle?) {
         if (save == null) {
             supportFragmentManager.beginTransaction()
                     .replace(R.id.main_container, NextFragment(), NextFragment::class.java.simpleName)
