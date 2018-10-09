@@ -18,7 +18,9 @@ import com.example.ares.buttonnavigation.Model.Match
 import com.example.ares.buttonnavigation.Database.database
 import com.example.ares.buttonnavigation.Utils.invisible
 import com.example.ares.buttonnavigation.Utils.visible
-import com.example.ares.buttonnavigation.anko.MatchDetailView
+import com.example.ares.buttonnavigation.anko.MainView
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
@@ -27,7 +29,7 @@ import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
-class FavoriteFragment : Fragment(),AnkoComponent<Context>, MatchDetailView {
+class FavoriteFragment : Fragment(),AnkoComponent<Context>, MainView {
     override fun showLoading() {
      progressBar.visible()
     }
@@ -72,14 +74,13 @@ class FavoriteFragment : Fragment(),AnkoComponent<Context>, MatchDetailView {
                         layoutManager = LinearLayoutManager(ctx)
                     }.lparams(width = matchParent, height = wrapContent)
 
-
                     progressBar = progressBar {
-                    }.lparams {
+                    }.lparams{
                         centerHorizontally()
-                        centerVertically()
-
                     }
+
                 }
+
             }
         }
     }
@@ -101,14 +102,20 @@ class FavoriteFragment : Fragment(),AnkoComponent<Context>, MatchDetailView {
     }
 
     private fun showFavorite(){
+        var favorite :List<Match>
         showLoading()
-        context?.database?.use {
-            val result = select(Match.TABEL_FAVORITE)
-            val favorite = result.parseList(classParser<Match>())
+        async(UI){
+                context?.database?.use {
+                    val result = select(Match.TABEL_FAVORITE)
+                    favorite = result.parseList(classParser())
+                    showMatchDetail(favorite)
+            }
+
+        }
+
             hideLoading()
-            showMatchDetail(favorite)
+
+
 
         }
     }
-
-}

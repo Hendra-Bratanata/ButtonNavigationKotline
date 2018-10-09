@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">Football Match</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="string">String</string>
-    <string name="hello_halaman_2">HEllo halaman 2</string>
     <string name="txVS">VS</string>
     <string name="goals">Goals</string>
     <string name="lineUps">Lineups</string>
@@ -12,11 +9,13 @@
     <string name="defense">Defense</string>
     <string name="Golkeeper">Gol Keeper</string>
     <string name="shot">Shots</string>
-    <string name="teams">teams</string>
     <string name="favorites">favorite</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="tambahfavorite">tambahFavorite</string>
     <string name="prev.match">PrevMatch</string>
     <string name="next.match">NextMatch</string>
+    <string name="hapusnotif">Favorite telah di hapus</string>
+    <string name="tambahNotif">Telah Di tambahkan</string>
+    <string name="teamDetail">Team Details</string>
 </resources>

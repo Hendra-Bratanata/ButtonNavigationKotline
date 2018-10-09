@@ -61,4 +61,5 @@
     <item name="main_container" type="id" />
     <item name="bottom_layout" type="id" />
     <item name="bottom_navigation" type="id" />
+    <item name="progressBarHome" type="id" />
 </resources>
