@@ -13,8 +13,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="tambahfavorite">tambahFavorite</string>
-    <string name="prev.match">PrevMatch</string>
-    <string name="next.match">NextMatch</string>
+    <string name="Match">Match</string>
+    <string name="Teams">Teams</string>
     <string name="hapusnotif">Favorite telah di hapus</string>
     <string name="tambahNotif">Telah Di tambahkan</string>
     <string name="teamDetail">Team Details</string>

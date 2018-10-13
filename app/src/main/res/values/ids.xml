@@ -62,4 +62,8 @@
     <item name="bottom_layout" type="id" />
     <item name="bottom_navigation" type="id" />
     <item name="progressBarHome" type="id" />
+    <item name="rv_list_Next" type="id" />
+    <item name="tabs_main" type="id" />
+    <item name="viewPager_main" type="id" />
+    <item name="viewpager" type="id" />
 </resources>

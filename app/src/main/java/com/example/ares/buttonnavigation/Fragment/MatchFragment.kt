@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
+import android.widget.Toolbar
 import com.example.ares.buttonnavigation.*
 import com.example.ares.buttonnavigation.Activity.DetailActivity
 import com.example.ares.buttonnavigation.Adapter.MyPagerAdapter
@@ -35,44 +36,32 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.viewPager
 
-class PrevFragment : Fragment(),AnkoComponent<Context>, MainView {
-    override fun showLoading() {
-       progressBar.visible()
-    }
-
-    override fun hideLoading() {
-       progressBar.invisible()
-    }
+class MatchFragment : Fragment(),AnkoComponent<Context> {
 
 
-    override fun showMatchDetail(data: List<Match>) {
-        list.clear()
-        list.addAll(data)
-        adapter.notifyDataSetChanged()
-
-    }
-    private lateinit var presenter: Presenter
-    private lateinit var list: MutableList<Match>
-    private lateinit var adapter: PrevAdapter
-    private lateinit var gson: Gson
-    private lateinit var apiRepository: ApiRepository
-    private lateinit var rvList:RecyclerView
-    private lateinit var tglIndo : TanggalIndo
-    private lateinit var progressBar: ProgressBar
-
+    private lateinit var myViewPager:ViewPager
+    lateinit var myTabLayout:TabLayout
+    lateinit var toolbar: Toolbar
     override fun createView(ui: AnkoContext<Context>): View = with(ui) {
         relativeLayout {
-            progressBar = progressBar{
+            coordinatorLayout {
+                lparams(matchParent, matchParent)
 
-            }.lparams{
-                centerHorizontally()
-            }
-            rvList = recyclerView {
-                id = R.id.rv_list
-                layoutManager = LinearLayoutManager(activity)
-            }.lparams(width = matchParent, height =
-            matchParent) {
-                above(R.id.navigation)
+                appBarLayout {
+                    lparams(matchParent, wrapContent)
+                    myTabLayout = themedTabLayout(R.style.ThemeOverlay_AppCompat_Dark) {
+
+
+                    }.lparams(matchParent){
+                        scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_SNAP
+                    }
+                }
+                myViewPager = viewPager {
+                    id = R.id.viewpager
+                }.lparams(matchParent, matchParent)
+                (myViewPager?.layoutParams as CoordinatorLayout.LayoutParams).behavior = AppBarLayout.ScrollingViewBehavior()
+            }.lparams(matchParent, matchParent) {
+
             }
         }
     }
@@ -84,19 +73,10 @@ class PrevFragment : Fragment(),AnkoComponent<Context>, MainView {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        tglIndo = TanggalIndo()
-        list = mutableListOf()
-        adapter = PrevAdapter(list) {
-            val toast = Toast.makeText(activity, it.idEvent, Toast.LENGTH_SHORT)
-            toast.show()
-            ctx.startActivity<DetailActivity>("data" to it)
-        }
-        gson = Gson()
-        apiRepository = ApiRepository()
-        rvList.adapter = adapter
-        presenter = Presenter(this, gson, apiRepository)
-        presenter.getPrevMatch()
-    }
+        val fragmentAdapter = MyPagerAdapter(activity!!.supportFragmentManager)
+        myViewPager.adapter = fragmentAdapter
+        myTabLayout.setupWithViewPager(myViewPager)
 
+    }
 
 }

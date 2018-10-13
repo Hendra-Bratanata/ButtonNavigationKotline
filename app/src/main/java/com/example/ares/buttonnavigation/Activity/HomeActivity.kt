@@ -5,6 +5,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.example.ares.buttonnavigation.Fragment.FavoriteFragment
+import com.example.ares.buttonnavigation.Fragment.MatchFragment
 import com.example.ares.buttonnavigation.Fragment.NextFragment
 import com.example.ares.buttonnavigation.Fragment.PrevFragment
 import com.example.ares.buttonnavigation.R
@@ -13,6 +14,7 @@ import com.example.ares.buttonnavigation.anko.HomeActivityUI
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.ctx
 import org.jetbrains.anko.find
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -31,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
                 }
                 prev_match -> {
                     val actionBar = supportActionBar
-                    actionBar?.title = "Prev Match"
+                    actionBar?.title = "Match"
                     loadPrevFragment(savedInstanceState)
                 }
                 next_match ->{
@@ -69,7 +71,7 @@ class HomeActivity : AppCompatActivity() {
     fun loadPrevFragment(save:Bundle?) {
         if (save == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_container, PrevFragment(), PrevFragment::class.java.simpleName)
+                    .replace(R.id.main_container, MatchFragment(), MatchFragment::class.java.simpleName)
                     .commit()
         }
     }

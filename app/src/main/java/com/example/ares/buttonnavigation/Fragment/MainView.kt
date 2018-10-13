@@ -1,4 +1,4 @@
-package com.example.ares.buttonnavigation.anko
+package com.example.ares.buttonnavigation.Fragment
 
 import com.example.ares.buttonnavigation.Model.Match
 

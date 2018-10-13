@@ -18,7 +18,6 @@ import com.example.ares.buttonnavigation.Model.Match
 import com.example.ares.buttonnavigation.Database.database
 import com.example.ares.buttonnavigation.Utils.invisible
 import com.example.ares.buttonnavigation.Utils.visible
-import com.example.ares.buttonnavigation.anko.MainView
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.*
@@ -29,21 +28,7 @@ import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
-class FavoriteFragment : Fragment(),AnkoComponent<Context>, MainView {
-    override fun showLoading() {
-     progressBar.visible()
-    }
-
-    override fun hideLoading() {
-       progressBar.invisible()
-    }
-
-    override fun showMatchDetail(data: List<Match>) {
-      swipeRefreshLayout.isRefreshing = false
-        favorites.clear()
-        favorites.addAll(data)
-        adapter.notifyDataSetChanged()
-    }
+class FavoriteFragment : Fragment(),AnkoComponent<Context>{
 
     private var favorites: MutableList<Match> = mutableListOf()
     private lateinit var adapter: PrevAdapter
@@ -103,19 +88,17 @@ class FavoriteFragment : Fragment(),AnkoComponent<Context>, MainView {
 
     private fun showFavorite(){
         var favorite :List<Match>
-        showLoading()
         async(UI){
+                progressBar.visible()
                 context?.database?.use {
                     val result = select(Match.TABEL_FAVORITE)
                     favorite = result.parseList(classParser())
-                    showMatchDetail(favorite)
+                   favorites.clear()
+                    favorites.addAll(favorite)
+                    progressBar.invisible()
+                    adapter.notifyDataSetChanged()
             }
 
         }
-
-            hideLoading()
-
-
-
         }
     }

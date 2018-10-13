@@ -16,23 +16,17 @@ import com.example.ares.buttonnavigation.Activity.DetailActivity
 import com.example.ares.buttonnavigation.Adapter.PrevAdapter
 import com.example.ares.buttonnavigation.Model.Match
 import com.example.ares.buttonnavigation.NetWorkService.ApiRepository
-import com.example.ares.buttonnavigation.anko.Presenter
 import com.example.ares.buttonnavigation.Utils.TanggalIndo
-import com.example.ares.buttonnavigation.Utils.invisible
-import com.example.ares.buttonnavigation.Utils.visible
-import com.example.ares.buttonnavigation.anko.MainView
 import com.google.gson.Gson
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.ctx
 
-class NextFragment : Fragment(),AnkoComponent<Context>,MainView {
+class NextFragment : Fragment(),AnkoComponent<Context>, MainView {
     override fun showLoading() {
-        progressBar.visible()
     }
 
     override fun hideLoading() {
-        progressBar.invisible()
     }
 
     override fun showMatchDetail(data: List<Match>) {
@@ -54,13 +48,12 @@ class NextFragment : Fragment(),AnkoComponent<Context>,MainView {
     override fun createView(ui: AnkoContext<Context>): View = with(ui) {
         relativeLayout {
             rvList = recyclerView {
-                id = R.id.rv_list
+                id = R.id.rv_list_Next
                 layoutManager = LinearLayoutManager(ctx)
             }.lparams(width = matchParent, height =
             wrapContent) {
                 above(R.id.navigation)
             }
-            progressBar = progressBar {  }.lparams{centerHorizontally()}
         }
     }
 
