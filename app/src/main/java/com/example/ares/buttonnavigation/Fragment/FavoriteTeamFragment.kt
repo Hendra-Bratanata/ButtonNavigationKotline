@@ -78,6 +78,7 @@ class FavoriteTeamFragment : Fragment(),AnkoComponent<Context>{
         super.onActivityCreated(savedInstanceState)
         adapter = TeamAdapter(TeamFavorite){
             ctx.startActivity<TeamDetail>("dataTeam" to it)
+            
         }
         listEvent.adapter =adapter
         showFavorite()
@@ -93,6 +94,7 @@ class FavoriteTeamFragment : Fragment(),AnkoComponent<Context>{
                 context?.databaseTeam?.use {
                     val result = select(Team.TABEL_Team)
                     favorite = result.parseList(classParser())
+                    swipeRefreshLayout.isRefreshing=false
                    TeamFavorite.clear()
                     TeamFavorite.addAll(favorite)
                     progressBar.invisible()

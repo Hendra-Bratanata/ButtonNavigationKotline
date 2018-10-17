@@ -36,9 +36,9 @@ class FavoriteFragment : Fragment(),AnkoComponent<Context>{
     lateinit var swipeRefreshLayout: SwipeRefreshLayout
     lateinit var progressBar: ProgressBar
 
-    override fun createView(ui: AnkoContext<Context>): View = with(ui) {
+    override fun createView(ui: AnkoContext<Context>)=with(ui) {
         linearLayout {
-            lparams(width = matchParent, height = wrapContent)
+            lparams(matchParent,wrapContent)
             topPadding = dip(16)
             leftPadding = dip(16)
             rightPadding = dip(16)
@@ -52,7 +52,7 @@ class FavoriteFragment : Fragment(),AnkoComponent<Context>{
                         android.R.color.holo_orange_light,
                         android.R.color.holo_red_light)
                 relativeLayout {
-                    lparams(width = matchParent, height = wrapContent)
+                    lparams(matchParent,wrapContent)
 
 
                     listEvent = recyclerView {
@@ -93,6 +93,7 @@ class FavoriteFragment : Fragment(),AnkoComponent<Context>{
                 context?.database?.use {
                     val result = select(Match.TABEL_FAVORITE)
                     favorite = result.parseList(classParser())
+                    swipeRefreshLayout.isRefreshing=false
                    favorites.clear()
                     favorites.addAll(favorite)
                     progressBar.invisible()

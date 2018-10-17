@@ -122,7 +122,7 @@ class TeamDetail : AppCompatActivity() {
 
     private fun hapusFavorite() {
         try {
-            database.use {
+            databaseTeam.use {
                 delete(Team.TABEL_Team,"(idTeam = {id})","id" to data.idTeam.toString())
             }
             Toast.makeText(ctx,"Team Sudah Dihapus dari Favorite",Toast.LENGTH_SHORT).show()
