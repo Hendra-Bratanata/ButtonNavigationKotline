@@ -78,7 +78,7 @@ class FavoriteTeamFragment : Fragment(),AnkoComponent<Context>{
         super.onActivityCreated(savedInstanceState)
         adapter = TeamAdapter(TeamFavorite){
             ctx.startActivity<TeamDetail>("dataTeam" to it)
-            
+
         }
         listEvent.adapter =adapter
         showFavorite()

@@ -75,7 +75,7 @@ class SearchActivity : AppCompatActivity(),MainView {
         presenter = Presenter(this,gson,apiRepository)
         list = mutableListOf()
         adapter = MatchAdapter(list){
-            ctx.startActivity<DetailActivity>("data" to it)
+            ctx.startActivity<MatchDetail>("data" to it)
         }
         recyclerView.adapter =adapter
         progressBar.invisible()

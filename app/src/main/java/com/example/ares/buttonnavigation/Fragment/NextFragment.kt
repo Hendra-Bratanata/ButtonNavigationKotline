@@ -13,7 +13,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ProgressBar
 import android.widget.Spinner
-import com.example.ares.buttonnavigation.Activity.DetailActivity
+import com.example.ares.buttonnavigation.Activity.MatchDetail
 import com.example.ares.buttonnavigation.Adapter.MatchAdapter
 import com.example.ares.buttonnavigation.Model.Leagues
 import com.example.ares.buttonnavigation.Model.Match
@@ -131,7 +131,7 @@ class NextFragment : Fragment(),AnkoComponent<Context>, MainView {
         presenter.getIdLeague()
         adapter = MatchAdapter(list) {
 
-            ctx.startActivity<DetailActivity>("data" to it)
+            ctx.startActivity<MatchDetail>("data" to it)
         }
 
 

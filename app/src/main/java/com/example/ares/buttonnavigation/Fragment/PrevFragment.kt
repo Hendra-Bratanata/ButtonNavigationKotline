@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.example.ares.buttonnavigation.Activity.DetailActivity
+import com.example.ares.buttonnavigation.Activity.MatchDetail
 import com.example.ares.buttonnavigation.Adapter.MatchAdapter
 import com.example.ares.buttonnavigation.Model.Leagues
 import com.example.ares.buttonnavigation.Model.Match
@@ -135,7 +135,7 @@ class PrevFragment : Fragment(),AnkoComponent<Context>, MainView {
         adapter = MatchAdapter(list) {
             val toast = Toast.makeText(activity, it.idEvent, Toast.LENGTH_SHORT)
             toast.show()
-            ctx.startActivity<DetailActivity>("data" to it)
+            ctx.startActivity<MatchDetail>("data" to it)
         }
 
         rvList.adapter = adapter

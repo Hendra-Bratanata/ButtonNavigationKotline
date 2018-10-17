@@ -19,7 +19,7 @@ import org.jetbrains.anko.design.themedTabLayout
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.viewPager
 
-class MatchFragment : Fragment(),AnkoComponent<Context>{
+class MatchViewTabFragment : Fragment(),AnkoComponent<Context>{
 
 
 

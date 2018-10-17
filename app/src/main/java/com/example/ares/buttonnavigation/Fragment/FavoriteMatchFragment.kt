@@ -11,7 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import com.example.ares.buttonnavigation.Activity.DetailActivity
+import com.example.ares.buttonnavigation.Activity.MatchDetail
 import com.example.ares.buttonnavigation.Adapter.MatchAdapter
 import com.example.ares.buttonnavigation.Database.database
 import com.example.ares.buttonnavigation.Model.Match
@@ -28,7 +28,7 @@ import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
-class FavoriteFragment : Fragment(),AnkoComponent<Context>{
+class FavoriteMatchFragment : Fragment(),AnkoComponent<Context>{
 
     private var favorites: MutableList<Match> = mutableListOf()
     private lateinit var adapter: MatchAdapter
@@ -77,7 +77,7 @@ class FavoriteFragment : Fragment(),AnkoComponent<Context>{
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         adapter = MatchAdapter(favorites){
-            ctx.startActivity<DetailActivity>("data" to it)
+            ctx.startActivity<MatchDetail>("data" to it)
         }
         listEvent.adapter =adapter
         showFavorite()

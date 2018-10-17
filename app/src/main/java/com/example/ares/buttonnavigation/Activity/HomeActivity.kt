@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.example.ares.buttonnavigation.Fragment.FavoriteTabFragment
-import com.example.ares.buttonnavigation.Fragment.MatchFragment
+import com.example.ares.buttonnavigation.Fragment.FavoriteViewTabFragment
+import com.example.ares.buttonnavigation.Fragment.MatchViewTabFragment
 import com.example.ares.buttonnavigation.Fragment.TeamFragment
 import com.example.ares.buttonnavigation.R
 import com.example.ares.buttonnavigation.R.id.*
@@ -56,7 +56,7 @@ class HomeActivity : AppCompatActivity() {
    private fun loadFavoriteFragment(save:Bundle?) {
         if (save == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_container, FavoriteTabFragment(), FavoriteTabFragment::class.java.simpleName)
+                    .replace(R.id.main_container, FavoriteViewTabFragment(), FavoriteViewTabFragment::class.java.simpleName)
                     .commit()
         }
     }
@@ -71,7 +71,7 @@ class HomeActivity : AppCompatActivity() {
     private fun loadPrevFragment(save:Bundle?) {
         if (save == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_container,MatchFragment(),MatchFragment::class.java.simpleName)
+                    .replace(R.id.main_container,MatchViewTabFragment(),MatchViewTabFragment::class.java.simpleName)
                     .commit()
         }
     }

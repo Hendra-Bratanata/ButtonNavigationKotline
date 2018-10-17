@@ -21,12 +21,12 @@ import org.jetbrains.anko.design.themedTabLayout
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.viewPager
 
-class FavoriteTabFragment : Fragment(),AnkoComponent<Context>{
+class FavoriteViewTabFragment : Fragment(),AnkoComponent<Context>{
 
     private lateinit var favoriteFragmentAdapter: FavoritePagerAdapter
     lateinit var myTabLayout : TabLayout
     lateinit var favoriteViewPage: ViewPager
-    lateinit var favoriteFragment: FavoriteFragment
+    lateinit var favoriteFragment: FavoriteMatchFragment
     lateinit var teamFavorite:FavoriteTeamFragment
     lateinit var data:Team
 
@@ -56,7 +56,7 @@ class FavoriteTabFragment : Fragment(),AnkoComponent<Context>{
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        favoriteFragment = FavoriteFragment()
+        favoriteFragment = FavoriteMatchFragment()
         teamFavorite = FavoriteTeamFragment()
         favoriteFragmentAdapter = FavoritePagerAdapter(childFragmentManager)
         favoriteFragmentAdapter.addFrag(favoriteFragment,"Matchs")
