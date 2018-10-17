@@ -10,12 +10,16 @@
     <string name="Golkeeper">Gol Keeper</string>
     <string name="shot">Shots</string>
     <string name="favorites">favorite</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="tambahfavorite">tambahFavorite</string>
     <string name="Match">Match</string>
     <string name="Teams">Teams</string>
     <string name="hapusnotif">Favorite telah di hapus</string>
     <string name="tambahNotif">Telah Di tambahkan</string>
     <string name="teamDetail">Team Details</string>
+    <string name="search">Search</string>
+
+    <string name="title_activity_team_detail">TeamDetail</string>
+    <string name="namaClub">namaClub</string>
+    <string name="height">Height (m)</string>
+    <string name="weights">Weight (Kg)</string>
 </resources>

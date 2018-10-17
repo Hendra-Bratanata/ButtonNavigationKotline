@@ -30,6 +30,7 @@ class MyDatabaseOpenHelper(ctx: Context ): ManagedSQLiteOpenHelper(ctx,"Favorite
                 Match.Home_Score to TEXT,
                 Match.Away_Score to TEXT,
                 Match.Date_Event to TEXT,
+                Match.Sport_Event to TEXT,
 
                 Match.Home_Team_id to TEXT,
                 Match.Away_Team_id to TEXT,

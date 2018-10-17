@@ -4,9 +4,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.ares.buttonnavigation.anko.RecycleViewUI
 import com.example.ares.buttonnavigation.Model.Match
 import com.example.ares.buttonnavigation.R
+import com.example.ares.buttonnavigation.anko.RecycleViewUI
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.find
 

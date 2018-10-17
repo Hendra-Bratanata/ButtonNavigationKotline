@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.example.ares.buttonnavigation.Fragment.FavoriteFragment
+import com.example.ares.buttonnavigation.Fragment.FavoriteTabFragment
 import com.example.ares.buttonnavigation.Fragment.MatchFragment
-import com.example.ares.buttonnavigation.Fragment.NextFragment
-import com.example.ares.buttonnavigation.Fragment.PrevFragment
+import com.example.ares.buttonnavigation.Fragment.TeamFragment
 import com.example.ares.buttonnavigation.R
 import com.example.ares.buttonnavigation.R.id.*
 import com.example.ares.buttonnavigation.anko.HomeActivityUI
@@ -18,7 +17,7 @@ import org.jetbrains.anko.find
 
 class HomeActivity : AppCompatActivity() {
 
-    lateinit var mBottomNavigation: BottomNavigationView
+    private lateinit var mBottomNavigation: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val view: View = HomeActivityUI<HomeActivity>().createView(AnkoContext.create(ctx,this))
@@ -28,18 +27,19 @@ class HomeActivity : AppCompatActivity() {
             when (item.itemId) {
                favorites -> {
                    val actionBar = supportActionBar
-                   actionBar?.title = "Teams"
+                   actionBar?.title = "Favorite"
                     loadFavoriteFragment(savedInstanceState)
                 }
                 prev_match -> {
                     val actionBar = supportActionBar
                     actionBar?.title = "Match"
                     loadPrevFragment(savedInstanceState)
+
                 }
                 next_match ->{
                     val actionBar = supportActionBar
-                    actionBar?.title = "Next Match"
-                    loadNextFragment(savedInstanceState)
+                    actionBar?.title = "Teams"
+                    loadTeamFragment(savedInstanceState)
                 }
 
                 home -> {
@@ -56,22 +56,22 @@ class HomeActivity : AppCompatActivity() {
    private fun loadFavoriteFragment(save:Bundle?) {
         if (save == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_container, FavoriteFragment(), FavoriteFragment::class.java.simpleName)
+                    .replace(R.id.main_container, FavoriteTabFragment(), FavoriteTabFragment::class.java.simpleName)
                     .commit()
         }
     }
 
-  private  fun loadNextFragment(save:Bundle?) {
+  private  fun loadTeamFragment(save:Bundle?) {
         if (save == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_container, NextFragment(), NextFragment::class.java.simpleName)
+                    .replace(R.id.main_container, TeamFragment(), TeamFragment::class.java.simpleName)
                     .commit()
         }
     }
-    fun loadPrevFragment(save:Bundle?) {
+    private fun loadPrevFragment(save:Bundle?) {
         if (save == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_container, MatchFragment(), MatchFragment::class.java.simpleName)
+                    .replace(R.id.main_container,MatchFragment(),MatchFragment::class.java.simpleName)
                     .commit()
         }
     }

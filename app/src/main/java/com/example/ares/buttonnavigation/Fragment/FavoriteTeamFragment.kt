@@ -11,10 +11,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import com.example.ares.buttonnavigation.Activity.DetailActivity
-import com.example.ares.buttonnavigation.Adapter.MatchAdapter
-import com.example.ares.buttonnavigation.Database.database
-import com.example.ares.buttonnavigation.Model.Match
+import com.example.ares.buttonnavigation.Activity.TeamDetail
+import com.example.ares.buttonnavigation.Adapter.TeamAdapter
+import com.example.ares.buttonnavigation.Database.databaseTeam
+import com.example.ares.buttonnavigation.Model.Team
 import com.example.ares.buttonnavigation.R
 import com.example.ares.buttonnavigation.Utils.invisible
 import com.example.ares.buttonnavigation.Utils.visible
@@ -28,15 +28,15 @@ import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.support.v4.swipeRefreshLayout
 
-class FavoriteFragment : Fragment(),AnkoComponent<Context>{
+class FavoriteTeamFragment : Fragment(),AnkoComponent<Context>{
 
-    private var favorites: MutableList<Match> = mutableListOf()
-    private lateinit var adapter: MatchAdapter
+    private var TeamFavorite: MutableList<Team> = mutableListOf()
+    private lateinit var adapter: TeamAdapter
     private lateinit var listEvent: RecyclerView
     lateinit var swipeRefreshLayout: SwipeRefreshLayout
     lateinit var progressBar: ProgressBar
 
-    override fun createView(ui: AnkoContext<Context>): View = with(ui) {
+    override fun createView(ui: AnkoContext<Context>)= with(ui) {
         linearLayout {
             lparams(width = matchParent, height = wrapContent)
             topPadding = dip(16)
@@ -76,8 +76,8 @@ class FavoriteFragment : Fragment(),AnkoComponent<Context>{
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        adapter = MatchAdapter(favorites){
-            ctx.startActivity<DetailActivity>("data" to it)
+        adapter = TeamAdapter(TeamFavorite){
+            ctx.startActivity<TeamDetail>("dataTeam" to it)
         }
         listEvent.adapter =adapter
         showFavorite()
@@ -87,14 +87,14 @@ class FavoriteFragment : Fragment(),AnkoComponent<Context>{
     }
 
     private fun showFavorite(){
-        var favorite :List<Match>
+        var favorite :List<Team>
         async(UI){
                 progressBar.visible()
-                context?.database?.use {
-                    val result = select(Match.TABEL_FAVORITE)
+                context?.databaseTeam?.use {
+                    val result = select(Team.TABEL_Team)
                     favorite = result.parseList(classParser())
-                   favorites.clear()
-                    favorites.addAll(favorite)
+                   TeamFavorite.clear()
+                    TeamFavorite.addAll(favorite)
                     progressBar.invisible()
                     adapter.notifyDataSetChanged()
             }

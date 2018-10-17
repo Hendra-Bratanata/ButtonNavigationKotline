@@ -66,4 +66,38 @@
     <item name="tabs_main" type="id" />
     <item name="viewPager_main" type="id" />
     <item name="viewpager" type="id" />
+    <item name="app" type="id" />
+    <item name="spinKu" type="id" />
+    <item name="spinKuNext" type="id" />
+    <item name="rvSearchView" type="id" />
+    <item name="progressSearch" type="id" />
+    <item name="imgTeam" type="id" />
+    <item name="tv_namaTeam" type="id" />
+    <item name="teamSpinner" type="id" />
+    <item name="imgTeamDetail" type="id" />
+    <item name="lyAtas" type="id" />
+    <item name="tvNamaClub" type="id" />
+    <item name="tvTahunClub" type="id" />
+    <item name="tvNamaStadion" type="id" />
+    <item name="appBarDetailTeam" type="id" />
+    <item name="teamDetailViewPager" type="id" />
+    <item name="myTabLayout" type="id" />
+    <item name="myTabLayoutteamDetail" type="id" />
+    <item name="deskripsi" type="id" />
+    <item name="rv_Player" type="id" />
+    <item name="tvPosisi" type="id" />
+    <item name="imgBannerPlayer" type="id" />
+    <item name="berat" type="id" />
+    <item name="tvBerat" type="id" />
+    <item name="tvTinggi" type="id" />
+    <item name="tinggi" type="id" />
+    <item name="lyBerat" type="id" />
+    <item name="lyTinggi" type="id" />
+    <item name="centerLy" type="id" />
+    <item name="posisi" type="id" />
+    <item name="playerDes" type="id" />
+    <item name="viewGaris" type="id" />
+    <item name="appBarFavorite" type="id" />
+    <item name="myTabLayoutFavorite" type="id" />
+    <item name="favoriteViewPager" type="id" />
 </resources>
